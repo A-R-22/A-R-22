@@ -1,0 +1,399 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bento-grid {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    width: 100%;
+    height: 100%;
+}
+
+.grid-item {
+    background-color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.grid-item video {
+    width: 100%;
+    height: 100%;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+
+.item-1 {
+    grid-column: span 2;
+}
+
+.item-6 {
+    grid-row: span 2;
+}
+
+.item-6 video {
+    width: 100%;
+    height: 100%;
+}
+
+
+.item-7 {
+    grid-row: span 2;
+}
+
+.item-5 {
+    grid-column: span 2;
+    grid-row: span 3;
+}
+
+.item-2 img,
+.item-10 img,
+.item-9 img,
+.item-3 img {
+    width: 100%;
+    height: 100%;
+}
+
+
+.item-11 {
+    grid-column: span 2;
+}
+
+.item-4,
+.item-11,
+.item-1,
+.item-8 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.316);
+    cursor: pointer;
+}
+
+.item-4 label,
+.item-11 label,
+.item-1 label,
+.item-8 label {
+    padding: 3px;
+    font-size: 3rem;
+    /* Se ajusta dinámicamente */
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 2px #911919, 0 0 5px #a12222, 0 0 10px #b72b2b, 0 0 18px #8f1616;
+    animation: parpadeo-led 1s infinite alternate;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.item-4:hover,
+.item-8:hover,
+.item-1:hover,
+.item-11:hover,
+.item-2:hover,
+.item-3:hover,
+.item-5:hover,
+.item-6:hover,
+.item-10:hover,
+.item-9:hover,
+.item-7:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.9);
+    background-color: red;
+}
+
+/* Modal */
+/* Estado inicial del modal (oculto y arriba) */
+.modal,
+.modal1,
+.modal2,
+.modal3 {
+    
+    box-sizing: border-box; /* Incluye el padding dentro del tamaño del modal */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    width: 85%;
+    max-width: 800px;
+    height: 90vh;
+    background-color: rgb(244, 159, 255);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    /* Mantiene el espacio sin mostrarlo */
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+}
+
+.modal h2{
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0 0 2px #911919, 0 0 5px #a12222, 0 0 10px #b72b2b, 0 0 18px #8f1616;
+    animation: parpadeo-led 1s infinite alternate;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Estado visible del modal */
+.modal.active,
+.modal1.active,
+.modal2.active,
+.modal3.active {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal,
+.modal1,
+.modal2,
+.modal3 {
+    text-align: justify;
+}
+
+/* Fondo oscuro (overlay) */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out;
+}
+
+/* Activar overlay */
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+/* Botón para cerrar el modal */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+@keyframes parpadeo-led {
+
+    0%,
+    100% {
+        text-shadow: 0 0 2px #911919, 0 0 5px #a12222, 0 0 10px #b72b2b, 0 0 18px #8f1616;
+    }
+
+    50% {
+        text-shadow: 0 0 1px #7d1515, 0 0 4px #931e1e, 0 0 8px #a82626, 0 0 15px #751010;
+    }
+}
+
+@media (max-width: 600px) {
+    .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .item-4 {
+        grid-column: span 2;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .item-4 label,
+    .item-11 label,
+    .item-1 label,
+    .item-8 label {
+        font-size: 1rem;
+    }
+
+}
+
+
+@media (max-width: 1100px) {
+
+    .item-4 label,
+    .item-11 label,
+    .item-1 label,
+    .item-8 label {
+
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 800px) {
+
+    .item-4 label,
+    .item-11 label,
+    .item-1 label,
+    .item-8 label {
+
+        font-size: 1rem;
+    }
+}
+
+/* Contenedor de imágenes dentro del modal */
+.image-container {
+    display: flex;
+    gap: 10px; /* Espacio entre las imágenes */
+    justify-content: center; /* Centra las imágenes en la fila */
+    flex-wrap: wrap; /* Asegura que las imágenes se ajusten si no caben en una fila */
+    overflow: hidden; /* Esconde cualquier parte de la imagen que se desborde */
+    max-width: 100%; /* El contenedor no puede ser más ancho que el modal */
+    margin-top: 20px;
+    padding: 10px; /* Añade espacio interno para que las imágenes no estén tan pegadas */
+}
+
+/* Estilo para las imágenes dentro del contenedor */
+.image-slide {
+    width: 100%; /* Asegura que las imágenes no se salgan del contenedor */
+    max-width: 200px; /* Limita el tamaño máximo de las imágenes */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+    object-fit: cover; /* Ajusta las imágenes para cubrir el área sin distorsionarse */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out; /* Efecto de transición */
+}
+
+/* Efecto hover opcional */
+.image-slide:hover {
+    transform: scale(1.05); /* Agranda ligeramente la imagen al pasar el ratón */
+}
+
+
+
+
+/* Contenedor de imágenes dentro del modal */
+.image-container {
+    display: flex;
+    gap: 10px; /* Espacio entre las imágenes */
+    justify-content: center; /* Centra las imágenes en la fila */
+    flex-wrap: wrap; /* Asegura que las imágenes se ajusten si no caben en una fila */
+    overflow: hidden; /* Esconde cualquier parte de la imagen que se desborde */
+    max-width: 100%; /* El contenedor no puede ser más ancho que el modal */
+    margin-top: 20px;
+}
+
+/* Estilo para las imágenes dentro del contenedor */
+.image-slide {
+    width: 30%; /* Asegura que quepan 3 imágenes en una fila */
+    height: auto; /* Mantiene la relación de aspecto */
+    object-fit: cover; /* Hace que las imágenes cubran el área sin distorsionarse */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out; /* Efecto de transición */
+}
+
+/* Efecto hover opcional */
+.image-slide:hover {
+    transform: scale(1.05); /* Agranda ligeramente la imagen al pasar el ratón */
+}
+
+
+
+
+
+
+
+/* Contenedor de los videos */
+.video-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* Estilo para cada video en la fila */
+.video-slide {
+    width: 30%;
+    /* Ajustamos el ancho de cada video */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del slider de imágenes */
+.image-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.modal h2 {
+    margin-bottom: 3px;
+}
+
+.modal p {
+    margin-top: 5px;
+    margin-bottom: 3px;
+}
+
+/* Estilo para cada imagen del slider */
+.image-slider .slide {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Efecto al pasar el cursor sobre las imágenes del slider */
+.image-slider .slide:hover {
+    transform: scale(1.1);
+}
