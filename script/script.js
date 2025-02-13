@@ -32,7 +32,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     if (anniversaryDate === "2024-08-22") {
         // Guardar la fecha de aniversario en localStorage
         localStorage.setItem("anniversaryDate", anniversaryDate);
-        window.location.href = "inicio.html"; // Redirige al dashboard
+        window.location.href = "love.html"; // Redirige al dashboard
     } else {
         document.getElementById("errorMessage").classList.remove("hidden");
     }
